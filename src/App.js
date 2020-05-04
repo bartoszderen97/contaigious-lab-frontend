@@ -1,10 +1,11 @@
 import React from 'react';
-import Menu from './Menu.js';
 import './App.css';
+import Menu from './Menu.js';
 import Footer from './Footer.js';
-import About from './About.js';
 import Contact from './Contact.js';
 import Login from './Login.js';
+import Register from './Register.js';
+import ResetPassword from './Reset-password.js';
 import Offer from './Offer.js';
 import HomePage from './Home-page.js';
 import {
@@ -24,7 +25,8 @@ class App extends React.Component{
                         <Switch>
                             <Route exact path={"/"} component={HomePage} />
                             <Route path={"/login"} component={Login} />
-                            <Route path={"/about"} component={About} />
+                            <Route path={"/register"} component={Register} />
+                            <Route path={"/reset-password"} component={ResetPassword} />
                             <Route path={"/offer"} component={Offer} />
                             <Route path={"/contact"} component={Contact} />
                         </Switch>
