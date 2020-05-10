@@ -1,23 +1,68 @@
 import React from 'react';
 import './Login.css';
 import {NavLink} from 'react-router-dom';
+import axios from "axios";
 
 class Login  extends React.Component {
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            email: "",
+            password: "",
+            errors: ""
+        };
+
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+    }
+
+    handleChange(event) {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    }
+
+    handleSubmit(event) {
+        const { email, password } = this.state;
+
+        axios.post(
+                "http://localhost/public/api/auth/login",
+                {
+                    email: email,
+                    password: password
+                },
+                { withCredentials: false }
+            )
+            .then(response => {
+                if (response.data.logged_in) {
+                    this.props.handleSuccessfulAuth(response.data);
+                }
+            })
+            .catch(error => {
+                console.log("login error", error);
+            });
+        event.preventDefault();
+    }
+
     render() {
         return (
             <div className="container">
                 <div id="login-row" className="row justify-content-center align-items-center">
                     <div id="login-column" className="col-md-6">
                         <div id="login-box" className="col-md-12">
-                            <form id="login-form" className="form" action="" method="post">
+                            <form id="login-form" className="form" onSubmit={this.handleSubmit}>
                                 <h3 className="text-center text-info">Logowanie</h3>
                                 <div className="form-group">
                                     <label htmlFor="username" className="text-info">E-mail:</label><br/>
-                                    <input type="text" name="username" id="username" className="form-control"/>
+                                    <input type="text" name="email" id="username" className="form-control"
+                                           value={this.state.email} onChange={this.handleChange}/>
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="password" className="text-info">Hasło:</label><br/>
-                                    <input type="text" name="password" id="password" className="form-control"/>
+                                    <input type="password" name="password" id="password" className="form-control"
+                                           value={this.state.password} onChange={this.handleChange}/>
                                 </div>
 
                                 <div className="form-group d-flex justify-content-between">

@@ -11,7 +11,7 @@ class Menu  extends React.Component {
 
                 <h5 className="my-0 mr-md-auto font-weight-normal">
 
-                    <NavLink className="navbar-brand" to="/home-page">
+                    <NavLink className="navbar-brand" to="/">
                             <img id="logo" className="my-0 mr-md-auto" src={logo} alt="Logo Laboratorium" />
                     </NavLink>
 
