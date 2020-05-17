@@ -14,6 +14,8 @@ import {
     Route
 }
 from "react-router-dom";
+import {ProtectedRoute} from "./Protected.route";
+import LoggedIn from "./LoggedIn";
 
 class App extends React.Component{
     render() {
@@ -25,6 +27,7 @@ class App extends React.Component{
                         <Switch>
                             <Route exact path={"/"} component={HomePage} />
                             <Route path={"/login"} component={Login} />
+                            <ProtectedRoute path={"/logged-in"} component={LoggedIn} />
                             <Route path={"/register"} component={Register} />
                             <Route path={"/reset-password"} component={ResetPassword} />
                             <Route path={"/offer"} component={Offer} />

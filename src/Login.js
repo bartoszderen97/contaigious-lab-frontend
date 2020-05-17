@@ -2,6 +2,8 @@ import React from 'react';
 import './Login.css';
 import {NavLink} from 'react-router-dom';
 import axios from "axios";
+import Auth from "./Auth";
+import Menu from "./Menu";
 
 class Login  extends React.Component {
 
@@ -33,11 +35,13 @@ class Login  extends React.Component {
                     email: email,
                     password: password
                 },
-                { withCredentials: false }
             )
             .then(response => {
-                if (response.data.logged_in) {
-                    this.props.handleSuccessfulAuth(response.data);
+                if(response.data.status === 200){
+                    new Auth(response.data.token);
+                    console.log("loggedIn");
+                    this.props.history.push('/logged-in');
+                    window.location.reload(false);
                 }
             })
             .catch(error => {

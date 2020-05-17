@@ -2,9 +2,21 @@ import React from 'react';
 import logo from './logo.svg';
 import './Menu.css';
 import {NavLink} from 'react-router-dom';
+import Auth from "./Auth";
 
 
 class Menu  extends React.Component {
+
+    componentDidMount() {
+        let session = new Auth();
+        if(session.isTokenValid()) {
+            return <NavLink className="btn btn-outline-primary" to="/logged-in"> Menu klienta </NavLink>;
+        }
+        else {
+            return <NavLink className="btn btn-outline-primary" to="/login"> Logowanie </NavLink>;
+        }
+    }
+
     render() {
         return (
             <div className="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
@@ -23,8 +35,8 @@ class Menu  extends React.Component {
                     <NavLink className="menu-item" to="/contact"> Kontakt </NavLink>
 
                 </nav>
+                {this.componentDidMount()}
 
-                <NavLink className="btn btn-outline-primary" to="/login"> Logowanie </NavLink>
 
             </div>
         );
