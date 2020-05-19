@@ -12,7 +12,7 @@ class Login  extends React.Component {
         this.state = {
             email: "",
             password: "",
-            errors: ""
+            error: ""
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -42,8 +42,16 @@ class Login  extends React.Component {
                     this.props.history.push('/logged-in');
                     window.location.reload(false);
                 }
+                else {
+                    this.setState({
+                        error: response.data.errors
+                    });
+                }
             })
             .catch(error => {
+                this.setState({
+                    error: error.response.data.errors
+                });
                 console.log("login error", error);
             });
         event.preventDefault();
@@ -57,6 +65,14 @@ class Login  extends React.Component {
                         <div id="login-box" className="col-md-12">
                             <form id="login-form" className="form" onSubmit={this.handleSubmit}>
                                 <h3 className="text-center text-info">Logowanie</h3>
+
+                                {this.state.error.email &&
+                                <p className={"mb-0 in-valid"}>{this.state.error.email[0]}</p>
+                                }
+                                {this.state.error.password &&
+                                <p className={"mb-0 in-valid"}>{this.state.error.password[0]}</p>
+                                }
+
                                 <div className="form-group">
                                     <label htmlFor="username" className="text-info">E-mail:</label><br/>
                                     <input type="text" name="email" id="username" className="form-control"

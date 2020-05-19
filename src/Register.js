@@ -1,6 +1,8 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
 import './Login.css';
+import axios from "axios";
+import Auth from "./Auth";
 
 class Register  extends React.Component {
 
@@ -16,7 +18,7 @@ class Register  extends React.Component {
             pesel: null,
             gender: "",
             lang: "",
-            errors: ""
+            error: ""
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -30,7 +32,45 @@ class Register  extends React.Component {
     }
 
     handleSubmit(event) {
-        
+
+        const { first_name, last_name,
+            email, password, password_confirmation,
+            pesel, gender, lang } = this.state;
+
+        axios.post(
+            "http://localhost/public/api/auth/register",
+            {
+                first_name: first_name,
+                last_name: last_name,
+                email: email,
+                password: password,
+                password_confirmation: password_confirmation,
+                pesel: pesel,
+                gender: gender,
+                lang: lang
+            },
+        )
+            .then(response => {
+                if(response.data.status === 200){
+                    new Auth(response.data.token);
+                    console.log("registered");
+                    this.props.history.push('/logged-in');
+                    window.location.reload(false);
+                }
+                else {
+                    this.setState({
+                        error: response.data.errors
+                    });
+                }
+
+            })
+            .catch(error => {
+                this.setState({
+                    error: error.response.data.errors
+                });
+                console.log("register error", error);
+            });
+        event.preventDefault();
     }
 
     render() {
@@ -40,6 +80,32 @@ class Register  extends React.Component {
                         <div id="login-box" className="col-md-12">
                             <form id="login-form" className="form" onSubmit={this.handleSubmit}>
                                 <h3 className="text-center text-info">Rejestracja</h3>
+
+                                {this.state.error.first_name &&
+                                <p className="mb-0">{this.state.error.first_name[0]}</p>
+                                }
+                                {this.state.error.last_name &&
+                                <p className="mb-0">{this.state.error.last_name[0]}</p>
+                                }
+                                {this.state.error.email &&
+                                <p className={"mb-0 in-valid"}>{this.state.error.email[0]}</p>
+                                }
+                                {this.state.error.password &&
+                                <p className={"mb-0 in-valid"}>{this.state.error.password[0]}</p>
+                                }
+                                {this.state.error.password_confirmation &&
+                                <p className="mb-0 in-valid">{this.state.error.password_confirmation[0]}</p>
+                                }
+                                {this.state.error.pesel &&
+                                <p className="mb-0 in-valid">{this.state.error.pesel[0]}</p>
+                                }
+                                {this.state.error.gender &&
+                                <p className="mb-0 in-valid">{this.state.error.gender[0]}</p>
+                                }
+                                {this.state.error.lang &&
+                                <p className="mb-0 in-valid">{this.state.error.lang[0]}</p>
+                                }
+
                                 <div className="form-group">
                                     <label htmlFor="username" className="text-info">Imie:</label><br/>
                                     <input type="text" name="first_name" id="first_name" className="form-control"
