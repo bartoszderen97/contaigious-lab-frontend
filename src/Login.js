@@ -3,7 +3,6 @@ import './Login.css';
 import {NavLink} from 'react-router-dom';
 import axios from "axios";
 import Auth from "./Auth";
-import Menu from "./Menu";
 
 class Login  extends React.Component {
 
