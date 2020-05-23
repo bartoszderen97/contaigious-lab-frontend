@@ -66,22 +66,26 @@ class Login  extends React.Component {
                             <form id="login-form" className="form" onSubmit={this.handleSubmit}>
                                 <h3 className="text-center text-info">Logowanie</h3>
 
-                                {this.state.error.email &&
-                                <p className={"mb-0 in-valid"}>{this.state.error.email[0]}</p>
-                                }
-                                {this.state.error.password &&
-                                <p className={"mb-0 in-valid"}>{this.state.error.password[0]}</p>
+
+                                {this.state.error.token &&
+                                <p className={"mb-0 in-valid"}>{this.state.error.token}</p>
                                 }
 
                                 <div className="form-group">
                                     <label htmlFor="username" className="text-info">E-mail:</label><br/>
                                     <input type="text" name="email" id="username" className="form-control"
                                            value={this.state.email} onChange={this.handleChange}/>
+                                    {this.state.error.email &&
+                                    <p className={"mb-0 in-valid"}>{this.state.error.email[0]}</p>
+                                    }
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="password" className="text-info">Hasło:</label><br/>
                                     <input type="password" name="password" id="password" className="form-control"
                                            value={this.state.password} onChange={this.handleChange}/>
+                                    {this.state.error.password &&
+                                    <p className={"mb-0 in-valid"}>{this.state.error.password[0]}</p>
+                                    }
                                 </div>
 
                                 <div className="form-group d-flex justify-content-between">
