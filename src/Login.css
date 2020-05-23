@@ -9,3 +9,6 @@
 .container #login-row #login-column #login-box #login-form {
     padding: 20px;
 }
+.in-valid {
+    color: red;
+}

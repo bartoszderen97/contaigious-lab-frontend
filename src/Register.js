@@ -81,66 +81,63 @@ class Register  extends React.Component {
                             <form id="login-form" className="form" onSubmit={this.handleSubmit}>
                                 <h3 className="text-center text-info">Rejestracja</h3>
 
-                                {this.state.error.first_name &&
-                                <p className="mb-0">{this.state.error.first_name[0]}</p>
-                                }
-                                {this.state.error.last_name &&
-                                <p className="mb-0">{this.state.error.last_name[0]}</p>
-                                }
-                                {this.state.error.email &&
-                                <p className={"mb-0 in-valid"}>{this.state.error.email[0]}</p>
-                                }
-                                {this.state.error.password &&
-                                <p className={"mb-0 in-valid"}>{this.state.error.password[0]}</p>
-                                }
-                                {this.state.error.password_confirmation &&
-                                <p className="mb-0 in-valid">{this.state.error.password_confirmation[0]}</p>
-                                }
-                                {this.state.error.pesel &&
-                                <p className="mb-0 in-valid">{this.state.error.pesel[0]}</p>
-                                }
-                                {this.state.error.gender &&
-                                <p className="mb-0 in-valid">{this.state.error.gender[0]}</p>
-                                }
-                                {this.state.error.lang &&
-                                <p className="mb-0 in-valid">{this.state.error.lang[0]}</p>
-                                }
 
                                 <div className="form-group">
                                     <label htmlFor="username" className="text-info">Imie:</label><br/>
                                     <input type="text" name="first_name" id="first_name" className="form-control"
                                            value={this.state.first_name} onChange={this.handleChange}/>
+                                    {this.state.error.first_name &&
+                                    <p className="mb-0 in-valid">{this.state.error.first_name[0]}</p>
+                                    }
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="username" className="text-info">Nazwisko:</label><br/>
                                     <input type="text" name="last_name" id="last_name" className="form-control"
                                            value={this.state.last_name} onChange={this.handleChange}/>
+                                    {this.state.error.last_name &&
+                                    <p className="mb-0 in-valid">{this.state.error.last_name[0]}</p>
+                                    }
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="username" className="text-info">E-mail:</label><br/>
                                     <input type="text" name="email" id="username" className="form-control"
                                            value={this.state.email} onChange={this.handleChange}/>
+                                    {this.state.error.email &&
+                                    <p className={"mb-0 in-valid"}>{this.state.error.email[0]}</p>
+                                    }
                                 </div>
                                 <div className="form-group">
                                     <label htmlFor="password" className="text-info">Hasło:</label><br/>
                                     <input type="password" name="password" id="password" className="form-control"
                                            value={this.state.password} onChange={this.handleChange}/>
+                                    {this.state.error.password &&
+                                    <p className={"mb-0 in-valid"}>{this.state.error.password[0]}</p>
+                                    }
                                 </div>
 
                                 <div className="form-group">
                                     <label htmlFor="password" className="text-info">Potwierdz hasło:</label><br/>
                                     <input type="password" name="password_confirmation" id="password_confirmation" className="form-control"
                                            value={this.state.password_confirmation} onChange={this.handleChange}/>
+                                    {this.state.error.password_confirmation &&
+                                    <p className="mb-0 in-valid">{this.state.error.password_confirmation[0]}</p>
+                                    }
                                 </div>
 
                                 <div className="form-group">
                                     <label htmlFor="password" className="text-info">PESEL:</label><br/>
                                     <input type="text" name="pesel" id="pesel" className="form-control"
                                            value={this.state.pesel} onChange={this.handleChange}/>
+                                    {this.state.error.pesel &&
+                                    <p className="mb-0 in-valid">{this.state.error.pesel[0]}</p>
+                                    }
                                 </div>
 
                                 <div className="form-group d-block">
                                     <label htmlFor="password" className="text-info">Plec:</label><br/>
+                                    {this.state.error.gender &&
+                                    <p className="mb-0 in-valid">{this.state.error.gender[0]}</p>
+                                    }
                                         <input className="mx-3" type="radio" name="gender" id="option1" autoComplete="off"
                                                value="F" onClick={this.handleChange} /> Kobieta
 
@@ -153,6 +150,9 @@ class Register  extends React.Component {
 
                                 <div className="form-group d-block">
                                     <label htmlFor="password" className="text-info">Jezyk:</label><br/>
+                                    {this.state.error.lang &&
+                                    <p className="mb-0 in-valid">{this.state.error.lang[0]}</p>
+                                    }
                                         <input className="mx-3" type="radio" name="lang" id="option1" autoComplete="off"
                                                value="pl" onClick={this.handleChange} /> Polski
 
