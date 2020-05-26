@@ -8,6 +8,7 @@ import Register from './Register.js';
 import ResetPassword from './Reset-password.js';
 import Offer from './Offer.js';
 import Users from './Users.js';
+import Applications from './Applications.js';
 import HomePage from './Home-page.js';
 import {
     BrowserRouter as Router,
@@ -30,6 +31,7 @@ class App extends React.Component{
                             <Route path={"/login"} component={Login} />
                             <ProtectedRoute path={"/logged-in"} component={LoggedIn} />
                             <ProtectedRoute path={"/users"} component={Users} />
+                            <ProtectedRoute path={"/applications"} component={Applications} />
                             <Route path={"/register"} component={Register} />
                             <Route path={"/reset-password"} component={ResetPassword} />
                             <Route path={"/offer"} component={Offer} />
