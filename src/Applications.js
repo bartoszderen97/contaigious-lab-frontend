@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from "axios";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit, faEnvelope, faTrash  } from '@fortawesome/free-solid-svg-icons'
 
 class Applications extends React.Component {
 
@@ -58,7 +60,7 @@ class Applications extends React.Component {
                 </form>
                 <div className="container">
                     <div className="row">
-                        <div className="col">
+                        <div className="col-md-1">
                             <b>Id zgłoszenia</b>
                         </div>
                         <div className="col">
@@ -68,19 +70,22 @@ class Applications extends React.Component {
                             <b>Imie i nazwisko</b>
                         </div>
                         <div className="col">
-                            <b>pesel</b>
+                            <b>Pesel</b>
+                        </div>
+                        <div className="col-md-3">
+                            <b>Nazwa badania</b>
                         </div>
                         <div className="col">
-                            <b>nazwa badania</b>
+                            <b>Zgłoszenie dodane przez</b>
                         </div>
-                        <div className="col">
-                            <b>zgłoszenie dodane przez</b>
+                        <div className="col-md-2">
+                            <b>Edycja</b>
                         </div>
                     </div>
-                    { this.state.filteredApplications.map(applications =>
-                        <div className="row" key={applications.id}>
+                    { this.state.filteredApplications.map((applications, index) =>
+                        <div className={"row my-2 parzyste" + index%2} key={applications.id}>
 
-                            <div className="col">
+                            <div className="col-md-1">
                                 {applications.id}
                             </div>
                             <div className="col">
@@ -92,11 +97,16 @@ class Applications extends React.Component {
                             <div className="col">
                                 {applications.patient.pesel}
                             </div>
-                            <div className="col">
+                            <div className="col-md-3">
                                 {applications.examination.name}
                             </div>
                             <div className="col">
                                 {applications.applier.first_name+" "+applications.applier.last_name}
+                            </div>
+                            <div className="col-md-2">
+                                <button className="btn"><FontAwesomeIcon icon={faTrash} /></button>
+                                <button className="btn"><FontAwesomeIcon icon={faEnvelope} /></button>
+                                <button className="btn"><FontAwesomeIcon icon={faEdit} /></button>
                             </div>
                         </div>)}
                 </div>
