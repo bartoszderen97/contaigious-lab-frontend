@@ -74,6 +74,7 @@ class Offer extends React.Component {
                                     {exam.details.map((detail, key) => <li key={key}>{detail}</li>)}
                                 </ul>
                                 <button type="button" className="btn btn-lg btn-block btn-primary">Zapisz sie</button>
+
                             </div>
                         </div>)}
                 </div>

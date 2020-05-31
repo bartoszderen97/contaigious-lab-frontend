@@ -24,7 +24,7 @@ class LoggedIn  extends React.Component {
 
                     <NavLink to="/users">
                         <button type="button" className="list-group-item list-group-item-action">
-                            Lista uytkowników
+                            Lista użytkowników
                         </button>
                     </NavLink>
                     <NavLink to="/applications">

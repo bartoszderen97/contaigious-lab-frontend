@@ -1,5 +1,9 @@
 import React from 'react';
 import axios from "axios";
+import './Users.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit, faEnvelope, faTrash  } from '@fortawesome/free-solid-svg-icons'
+
 
 class Users extends React.Component {
 
@@ -66,26 +70,31 @@ class Users extends React.Component {
                         <div className="col">
                             <b>Imie i nazwisko</b>
                         </div>
-                        <div className="col">
+                        <div className="col-md-3">
                             <b>Adres email</b>
                         </div>
                         <div className="col">
-                            <b>pesel</b>
+                            <b>Pesel</b>
                         </div>
                         <div className="col">
-                            <b>plec</b>
+                            <b>Płeć</b>
                         </div>
                         <div className="col">
-                            <b>rola</b>
+                            <b>Rola</b>
                         </div>
+                        <div className="col">
+                            <b>Edycja</b>
+                        </div>
+
                     </div>
-                        { this.state.filteredUsers.map(user =>
-                            <div className="row" key={user.id}>
+                        { this.state.filteredUsers.map((user, index) =>
+
+                            <div className={"row my-2 parzyste" + index%2} key={user.id}>
 
                                 <div className="col">
                                     {user.first_name+" "+user.last_name}
                                 </div>
-                                <div className="col">
+                                <div className="col-md-3" >
                                     {user.email}
                                 </div>
                                 <div className="col">
@@ -96,6 +105,11 @@ class Users extends React.Component {
                                 </div>
                                 <div className="col">
                                     {user.role}
+                                </div>
+                                <div className="col">
+                                    <button className="btn"><FontAwesomeIcon icon={faTrash} /></button>
+                                    <button className="btn"><FontAwesomeIcon icon={faEnvelope} /></button>
+                                    <button className="btn"><FontAwesomeIcon icon={faEdit} /></button>
                                 </div>
                             </div>)}
                 </div>
