@@ -32,6 +32,21 @@ class LoggedIn  extends React.Component {
                 <div className="mx-auto my-5">
                     <div className="text-center">
 
+                        <NavLink to={"/userProfile/"+this.state.userID}>
+                            <button type="button" className="list-group-item list-group-item-action">
+                                Profil użytkownika
+                            </button>
+                        </NavLink>
+                        <NavLink to="/applications-history">
+                            <button type="button" className="list-group-item list-group-item-action">
+                                Historia zgłoszeń na badania
+                            </button>
+                        </NavLink>
+                        <NavLink to="/results-history">
+                            <button type="button" className="list-group-item list-group-item-action">
+                                Historia wyników badań
+                            </button>
+                        </NavLink>
                         <NavLink to="/users">
                             <button type="button" className="list-group-item list-group-item-action">
                                 Lista użytkowników
@@ -40,6 +55,11 @@ class LoggedIn  extends React.Component {
                         <NavLink to="/applications">
                             <button type="button" className="list-group-item list-group-item-action">
                                 Lista zgłoszeń na badania
+                            </button>
+                        </NavLink>
+                        <NavLink to="/new-application/0">
+                            <button type="button" className="list-group-item list-group-item-action">
+                                Dodaj zgłoszenie na badanie
                             </button>
                         </NavLink>
                         <NavLink to="/results">
@@ -59,6 +79,36 @@ class LoggedIn  extends React.Component {
                     <div className="text-center">
 
                         <h2>Menu pracownika</h2>
+                        <NavLink to={"/userProfile/"+this.state.userID}>
+                            <button type="button" className="list-group-item list-group-item-action">
+                                Profil użytkownika
+                            </button>
+                        </NavLink>
+                        <NavLink to="/applications-history">
+                            <button type="button" className="list-group-item list-group-item-action">
+                                Historia zgłoszeń na badania
+                            </button>
+                        </NavLink>
+                        <NavLink to="/results-history">
+                            <button type="button" className="list-group-item list-group-item-action">
+                                Historia wyników badań
+                            </button>
+                        </NavLink>
+                        <NavLink to="/applications">
+                            <button type="button" className="list-group-item list-group-item-action">
+                                Lista zgłoszeń na badania
+                            </button>
+                        </NavLink>
+                        <NavLink to="/new-application/0">
+                            <button type="button" className="list-group-item list-group-item-action">
+                                Dodaj zgłoszenie na badanie
+                            </button>
+                        </NavLink>
+                        <NavLink to="/results">
+                            <button type="button" className="list-group-item list-group-item-action">
+                                Lista wyników badań
+                            </button>
+                        </NavLink>
                         <button type="button" className="list-group-item list-group-item-action" onClick={this.handleOnClick}>Wyloguj
                         </button>
                     </div>
@@ -71,6 +121,21 @@ class LoggedIn  extends React.Component {
                     <div className="text-center">
 
                         <h2>Menu pacjenta</h2>
+                        <NavLink to={"/userProfile/"+this.state.userID}>
+                            <button type="button" className="list-group-item list-group-item-action">
+                                Profil użytkownika
+                            </button>
+                        </NavLink>
+                        <NavLink to="/applications-history">
+                            <button type="button" className="list-group-item list-group-item-action">
+                                Historia zgłoszeń na badania
+                            </button>
+                        </NavLink>
+                        <NavLink to="/results-history">
+                            <button type="button" className="list-group-item list-group-item-action">
+                                Historia wyników badań
+                            </button>
+                        </NavLink>
                         <button type="button" className="list-group-item list-group-item-action" onClick={this.handleOnClick}>Wyloguj
                         </button>
                     </div>

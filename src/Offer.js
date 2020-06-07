@@ -34,6 +34,10 @@ class Offer extends React.Component {
         event.preventDefault();
     }
 
+    handleAdd(id) {
+        this.props.history.push('/new-application/'+id);
+    }
+
     componentDidMount() {
 
         axios.
@@ -73,7 +77,7 @@ class Offer extends React.Component {
                                 <ul className="list-unstyled mt-3 mb-4">
                                     {exam.details.map((detail, key) => <li key={key}>{detail}</li>)}
                                 </ul>
-                                <button type="button" className="btn btn-lg btn-block btn-primary">Zapisz sie</button>
+                                <button type="button" className="btn btn-lg btn-block btn-primary" onClick={() => this.handleAdd(exam.id)}>Zapisz sie</button>
 
                             </div>
                         </div>)}
