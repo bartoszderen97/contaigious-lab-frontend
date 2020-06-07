@@ -3,6 +3,7 @@ import axios from "axios";
 import './Users.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEdit, faEnvelope, faTrash  } from '@fortawesome/free-solid-svg-icons'
+import Auth from "./Auth";
 
 
 class Users extends React.Component {
@@ -25,7 +26,8 @@ class Users extends React.Component {
 
     handleSubmit(event) {
         axios.
-        get('http://localhost/public/api/users/getByName/'+this.state.examName).
+        get('http://localhost/public/api/users/getByName/'+this.state.examName
+    ).
         then(response => {
             if (response.status === 200){
                 this.setState({filteredUsers:response.data.data});
@@ -39,8 +41,13 @@ class Users extends React.Component {
 
     componentDidMount() {
 
+        let session = new Auth();
         axios.
-        get('http://localhost/public/api/user/getAll').
+        get('http://localhost/public/api/user/getAll',{
+            headers: {
+                Authorization: "Bearer "+session.getAuthToken()
+            }
+        }).
         then(response => {
             if (response.status === 200){
                 this.setState({filteredUsers:response.data.data});
