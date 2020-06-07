@@ -89,26 +89,26 @@ class Users extends React.Component {
                         </button>
                     </div>
                 </form>
-                <div className="container">
-                    <div className="row">
-                        <div className="col">
-                            <b>Imie i nazwisko</b>
-                        </div>
-                        <div className="col-md-3">
-                            <b>Adres email</b>
-                        </div>
-                        <div className="col">
-                            <b>Pesel</b>
-                        </div>
-                        <div className="col">
-                            <b>Płeć</b>
-                        </div>
-                        <div className="col">
-                            <b>Rola</b>
-                        </div>
-                        <div className="col">
-                            <b>Edycja</b>
-                        </div>
+                        <div className="container">
+                            <div className="row">
+                                <div className="col">
+                                    <b>Imie i nazwisko</b>
+                                </div>
+                                <div className="col-md-3">
+                                    <b>Adres email</b>
+                                </div>
+                                <div className="col">
+                                    <b>Pesel</b>
+                                </div>
+                                <div className="col">
+                                    <b>Płeć</b>
+                                </div>
+                                <div className="col">
+                                    <b>Rola</b>
+                                </div>
+                                <div className="col">
+                                    <b>Edycja</b>
+                                </div>
 
                     </div>
                         { this.state.filteredUsers.map((user, index) =>
