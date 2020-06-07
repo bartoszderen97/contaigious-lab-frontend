@@ -10,7 +10,7 @@ class Menu  extends React.Component {
     componentDidMount() {
         let session = new Auth();
         if(session.isTokenValid()) {
-            return <NavLink className="btn btn-outline-primary" to="/logged-in"> Menu klienta </NavLink>;
+            return <NavLink className="btn btn-outline-primary" to="/logged-in"> Menu użytkownika </NavLink>;
         }
         else {
             return <NavLink className="btn btn-outline-primary" to="/login"> Logowanie </NavLink>;

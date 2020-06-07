@@ -37,7 +37,7 @@ class Login  extends React.Component {
             )
             .then(response => {
                 if(response.data.status === 200){
-                    new Auth(response.data.token);
+                    new Auth(response.data.token, response.data.user_id, response.data.user_role);
                     console.log("loggedIn");
                     this.props.history.push('/logged-in');
                     window.location.reload(false);

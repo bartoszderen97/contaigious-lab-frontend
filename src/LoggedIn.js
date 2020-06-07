@@ -6,8 +6,17 @@ class LoggedIn  extends React.Component {
 
     constructor(props) {
         super(props);
-
         this.handleOnClick = this.handleOnClick.bind(this);
+        this.state = {
+            userID: null,
+            userRole:null
+        };
+    }
+
+    componentDidMount() {
+        let session = new Auth();
+        this.setState({userID:session.getUserId()});
+        this.setState({userRole:session.getUserRole()});
     }
 
     handleOnClick(event) {
@@ -18,30 +27,57 @@ class LoggedIn  extends React.Component {
     }
 
     render() {
-        return (
-            <div className="mx-auto my-5">
-                <div className="text-center">
+        if (this.state.userRole == "admin") {
+            return (
+                <div className="mx-auto my-5">
+                    <div className="text-center">
 
-                    <NavLink to="/users">
-                        <button type="button" className="list-group-item list-group-item-action">
-                            Lista użytkowników
+                        <NavLink to="/users">
+                            <button type="button" className="list-group-item list-group-item-action">
+                                Lista użytkowników
+                            </button>
+                        </NavLink>
+                        <NavLink to="/applications">
+                            <button type="button" className="list-group-item list-group-item-action">
+                                Lista zgłoszeń na badania
+                            </button>
+                        </NavLink>
+                        <NavLink to="/results">
+                            <button type="button" className="list-group-item list-group-item-action">
+                                Lista wyników badań
+                            </button>
+                        </NavLink>
+                        <button type="button" className="list-group-item list-group-item-action" onClick={this.handleOnClick}>Wyloguj
                         </button>
-                    </NavLink>
-                    <NavLink to="/applications">
-                        <button type="button" className="list-group-item list-group-item-action">
-                            Lista zgłoszeń na badania
-                        </button>
-                    </NavLink>
-                    <NavLink to="/results">
-                        <button type="button" className="list-group-item list-group-item-action">
-                            Lista wyników badań
-                        </button>
-                    </NavLink>
-                    <button type="button" className="list-group-item list-group-item-action" onClick={this.handleOnClick}>Wyloguj
-                    </button>
+                    </div>
                 </div>
-            </div>
-        );
+            );
+        }
+        else if (this.state.userRole === "worker") {
+            return (
+                <div className="mx-auto my-5">
+                    <div className="text-center">
+
+                        <h2>Menu pracownika</h2>
+                        <button type="button" className="list-group-item list-group-item-action" onClick={this.handleOnClick}>Wyloguj
+                        </button>
+                    </div>
+                </div>
+            );
+        }
+        else  {
+            return (
+                <div className="mx-auto my-5">
+                    <div className="text-center">
+
+                        <h2>Menu pacjenta</h2>
+                        <button type="button" className="list-group-item list-group-item-action" onClick={this.handleOnClick}>Wyloguj
+                        </button>
+                    </div>
+                </div>
+            );
+        }
+
     }
 }
 

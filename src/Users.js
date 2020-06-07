@@ -13,6 +13,7 @@ class Users extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     state = {
@@ -21,14 +22,17 @@ class Users extends React.Component {
     };
 
     handleChange(event) {
-        this.setState({examName:event.target.value});
+        this.setState({user_last_name:event.target.value});
     }
 
     handleSubmit(event) {
-        axios.
-        get('http://localhost/public/api/users/getByName/'+this.state.examName
-    ).
-        then(response => {
+        let session = new Auth();
+        axios.get('http://localhost/public/api/user/getByName/'+this.state.user_last_name,{
+                headers: {
+                    Authorization: "Bearer "+session.getAuthToken()
+                }
+            }
+        ).then(response => {
             if (response.status === 200){
                 this.setState({filteredUsers:response.data.data});
             }
@@ -39,16 +43,29 @@ class Users extends React.Component {
         event.preventDefault();
     }
 
+    handleDelete(user) {
+        let session = new Auth();
+        axios.delete('http://localhost/public/api/user/delete/'+user,{
+                headers: {
+                    Authorization: "Bearer "+session.getAuthToken()
+                }
+            }
+        ).then(response => {
+            console.log("Użytkownik usunięty");
+            window.location.reload(false);
+        }).catch(error => {
+            console.log("Error "+error);
+        });
+    }
+
     componentDidMount() {
 
         let session = new Auth();
-        axios.
-        get('http://localhost/public/api/user/getAll',{
+        axios.get('http://localhost/public/api/user/getAll',{
             headers: {
                 Authorization: "Bearer "+session.getAuthToken()
             }
-        }).
-        then(response => {
+        }).then(response => {
             if (response.status === 200){
                 this.setState({filteredUsers:response.data.data});
             }
@@ -114,8 +131,8 @@ class Users extends React.Component {
                                     {user.role}
                                 </div>
                                 <div className="col">
-                                    <button className="btn"><FontAwesomeIcon icon={faTrash} /></button>
-                                    <button className="btn"><FontAwesomeIcon icon={faEnvelope} /></button>
+                                    <button className="btn" key={user.id} onClick={() => this.handleDelete(user.id)}><FontAwesomeIcon icon={faTrash} /></button>
+                                    <a href={"mailto:"+user.email}><button className="btn"><FontAwesomeIcon icon={faEnvelope} /></button></a>
                                     <button className="btn"><FontAwesomeIcon icon={faEdit} /></button>
                                 </div>
                             </div>)}
