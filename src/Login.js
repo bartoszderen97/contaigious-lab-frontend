@@ -102,6 +102,12 @@ class Login  extends React.Component {
                                     <span className="d-block">
                                         <NavLink className="text-info" to="/reset-password">Zresetuj hasło</NavLink>
                                     </span>
+                                    <span className="d-block">
+                                        <NavLink className="text-info" to="/policy">Polityka prywatnosci</NavLink>
+                                    </span>
+                                    <span className="d-block">
+                                        <NavLink className="text-info" to="/terms">Regulamin serwisu</NavLink>
+                                    </span>
                                 </div>
                             </form>
                         </div>

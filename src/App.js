@@ -26,6 +26,8 @@ import LoggedIn from "./LoggedIn";
 import NewApplication from "./NewApplication";
 import NewResult from "./NewResult";
 import UserProfile from "./UserProfile";
+import Regulamin from "./Regulamin";
+import Polityka from "./Polityka";
 
 class App extends React.Component{
     render() {
@@ -48,6 +50,8 @@ class App extends React.Component{
                             <ProtectedRoute path={"/result-history"} component={ResultHistory} />
                             <ProtectedRoute path={"/new-result/:handle"} component={NewResult} />
                             <Route path={"/register"} component={Register} />
+                            <Route path={"/terms"} component={Regulamin} />
+                            <Route path={"/policy"} component={Polityka} />
                             <Route path={"/reset-password"} component={ResetPassword} />
                             <Route path={"/offer"} component={Offer} />
                             <Route path={"/contact"} component={Contact} />

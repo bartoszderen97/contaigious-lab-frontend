@@ -1,13 +1,13 @@
 import React from 'react';
 
-class NewResult  extends React.Component {
+class Regulamin  extends React.Component {
     render() {
         return (
             <div>
-                <h2>New result </h2>
+                <h2> Regulamin </h2>
             </div>
         );
     }
 }
 
-export default NewResult;
+export default Regulamin;

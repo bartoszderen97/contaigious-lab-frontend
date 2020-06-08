@@ -1,13 +1,13 @@
 import React from 'react';
 
-class NewResult  extends React.Component {
+class Polityka  extends React.Component {
     render() {
         return (
             <div>
-                <h2>New result </h2>
+                <h2> Privacy policy </h2>
             </div>
         );
     }
 }
 
-export default NewResult;
+export default Polityka;

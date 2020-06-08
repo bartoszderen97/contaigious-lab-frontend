@@ -81,6 +81,12 @@ class ResetPassword  extends React.Component {
                                     <span className="d-block">
                                         <NavLink className="text-info" to="/login">Zaloguj się</NavLink>
                                     </span>
+                                    <span className="d-block">
+                                        <NavLink className="text-info" to="/policy">Polityka prywatnosci</NavLink>
+                                    </span>
+                                    <span className="d-block">
+                                        <NavLink className="text-info" to="/terms">Regulamin serwisu</NavLink>
+                                    </span>
                                 </div>
                             </form>
                         </div>
