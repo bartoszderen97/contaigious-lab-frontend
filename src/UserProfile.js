@@ -15,7 +15,7 @@ class UserProfile  extends React.Component {
             pesel: "",
             gender: "",
             lang: "",
-            error: []
+            error: ""
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -78,11 +78,11 @@ class UserProfile  extends React.Component {
                 }}
         ).then(response => {
             if(response.data.status === 200){
-                this.props.history.push('/applications');
+                this.props.history.push('/logged-in');
             }
             else {
                 this.setState({
-                    error: response.data.errors
+                    error: response.data.message
                 });
             }
         }).catch(error => {

@@ -58,6 +58,10 @@ class Users extends React.Component {
         });
     }
 
+    handleEdit(idUser) {
+        this.props.history.push('/userProfile/'+idUser);
+    }
+
     componentDidMount() {
 
         let session = new Auth();
@@ -133,7 +137,7 @@ class Users extends React.Component {
                                 <div className="col">
                                     <button className="btn" key={user.id} onClick={() => this.handleDelete(user.id)}><FontAwesomeIcon icon={faTrash} /></button>
                                     <a href={"mailto:"+user.email}><button className="btn"><FontAwesomeIcon icon={faEnvelope} /></button></a>
-                                    <button className="btn"><FontAwesomeIcon icon={faEdit} /></button>
+                                    <button className="btn" onClick={() => this.handleEdit(user.id)}><FontAwesomeIcon icon={faEdit} /></button>
                                 </div>
                             </div>)}
                 </div>

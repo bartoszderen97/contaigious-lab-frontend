@@ -1,13 +1,13 @@
 import React from 'react';
 
-class NewResult  extends React.Component {
+class ResultHistory  extends React.Component {
     render() {
         return (
             <div>
-                <h2>New esult </h2>
+                <h2>Result history </h2>
             </div>
         );
     }
 }
 
-export default NewResult;
+export default ResultHistory;
