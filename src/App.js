@@ -19,6 +19,7 @@ from "react-router-dom";
 import {ProtectedRoute} from "./Protected.route";
 import LoggedIn from "./LoggedIn";
 import NewApplication from "./NewApplication";
+import UserProfile from "./UserProfile";
 
 class App extends React.Component{
     render() {
@@ -32,6 +33,7 @@ class App extends React.Component{
                             <Route path={"/login"} component={Login} />
                             <ProtectedRoute path={"/logged-in"} component={LoggedIn} />
                             <ProtectedRoute path={"/users"} component={Users} />
+                            <ProtectedRoute path={"/userProfile/:handle"} component={UserProfile} />
                             <ProtectedRoute path={"/applications"} component={Applications} />
                             <ProtectedRoute path={"/new-application/:handle"} component={NewApplication} />
                             <Route path={"/register"} component={Register} />

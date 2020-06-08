@@ -59,7 +59,7 @@ class Register  extends React.Component {
                 }
                 else {
                     this.setState({
-                        error: response.data.errors
+                        error: response.data.message
                     });
                 }
 
@@ -80,7 +80,6 @@ class Register  extends React.Component {
                         <div id="login-box" className="col-md-12">
                             <form id="login-form" className="form" onSubmit={this.handleSubmit}>
                                 <h3 className="text-center text-info">Rejestracja</h3>
-
 
                                 <div className="form-group">
                                     <label htmlFor="username" className="text-info">Imie:</label><br/>
