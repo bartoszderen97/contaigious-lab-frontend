@@ -37,12 +37,12 @@ class LoggedIn  extends React.Component {
                                 Profil użytkownika
                             </button>
                         </NavLink>
-                        <NavLink to="/applications-history">
+                        <NavLink to="/application-history">
                             <button type="button" className="list-group-item list-group-item-action">
                                 Historia zgłoszeń na badania
                             </button>
                         </NavLink>
-                        <NavLink to="/results-history">
+                        <NavLink to="/result-history">
                             <button type="button" className="list-group-item list-group-item-action">
                                 Historia wyników badań
                             </button>
@@ -84,12 +84,12 @@ class LoggedIn  extends React.Component {
                                 Profil użytkownika
                             </button>
                         </NavLink>
-                        <NavLink to="/applications-history">
+                        <NavLink to="/application-history">
                             <button type="button" className="list-group-item list-group-item-action">
                                 Historia zgłoszeń na badania
                             </button>
                         </NavLink>
-                        <NavLink to="/results-history">
+                        <NavLink to="/result-history">
                             <button type="button" className="list-group-item list-group-item-action">
                                 Historia wyników badań
                             </button>
@@ -126,12 +126,12 @@ class LoggedIn  extends React.Component {
                                 Profil użytkownika
                             </button>
                         </NavLink>
-                        <NavLink to="/applications-history">
+                        <NavLink to="/application-history">
                             <button type="button" className="list-group-item list-group-item-action">
                                 Historia zgłoszeń na badania
                             </button>
                         </NavLink>
-                        <NavLink to="/results-history">
+                        <NavLink to="/result-history">
                             <button type="button" className="list-group-item list-group-item-action">
                                 Historia wyników badań
                             </button>
