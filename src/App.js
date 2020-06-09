@@ -10,7 +10,6 @@ import Offer from './Offer.js';
 import Users from './Users.js';
 import Applications from './Applications.js';
 import ApplicationHistory from './ApplicationHistory.js';
-import ApplicationDetails from './ApplicationDetails.js';
 
 import Results from "./Results";
 import ResultHistory from "./ResultHistory";
@@ -43,7 +42,6 @@ class App extends React.Component{
                             <ProtectedRoute path={"/users"} component={Users} />
                             <ProtectedRoute path={"/userProfile/:handle"} component={UserProfile} />
                             <ProtectedRoute path={"/applications"} component={Applications} />
-                            <ProtectedRoute path={"/application-details/:handle"} component={ApplicationDetails} />
                             <ProtectedRoute path={"/application-history"} component={ApplicationHistory} />
                             <ProtectedRoute path={"/new-application/:handle"} component={NewApplication} />
                             <ProtectedRoute path={"/results"} component={Results} />

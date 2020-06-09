@@ -32,6 +32,7 @@ class LoggedIn  extends React.Component {
                 <div className="mx-auto my-5">
                     <div className="text-center">
 
+                        <h2>Menu administratora</h2>
                         <NavLink to={"/userProfile/"+this.state.userID}>
                             <button type="button" className="list-group-item list-group-item-action">
                                 Profil użytkownika
@@ -65,6 +66,11 @@ class LoggedIn  extends React.Component {
                         <NavLink to="/results">
                             <button type="button" className="list-group-item list-group-item-action">
                                 Lista wyników badań
+                            </button>
+                        </NavLink>
+                        <NavLink to="/new-result/0">
+                            <button type="button" className="list-group-item list-group-item-action">
+                                Dodaj wynik badania
                             </button>
                         </NavLink>
                         <button type="button" className="list-group-item list-group-item-action" onClick={this.handleOnClick}>Wyloguj
@@ -109,6 +115,11 @@ class LoggedIn  extends React.Component {
                                 Lista wyników badań
                             </button>
                         </NavLink>
+                        <NavLink to="/new-result/0">
+                            <button type="button" className="list-group-item list-group-item-action">
+                                Dodaj wynik badania
+                            </button>
+                        </NavLink>
                         <button type="button" className="list-group-item list-group-item-action" onClick={this.handleOnClick}>Wyloguj
                         </button>
                     </div>
@@ -134,6 +145,11 @@ class LoggedIn  extends React.Component {
                         <NavLink to="/result-history">
                             <button type="button" className="list-group-item list-group-item-action">
                                 Historia wyników badań
+                            </button>
+                        </NavLink>
+                        <NavLink to="/new-application/0">
+                            <button type="button" className="list-group-item list-group-item-action">
+                                Dodaj zgłoszenie na badanie
                             </button>
                         </NavLink>
                         <button type="button" className="list-group-item list-group-item-action" onClick={this.handleOnClick}>Wyloguj

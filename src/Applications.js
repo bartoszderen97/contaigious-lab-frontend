@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from "axios";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faEdit, faEnvelope, faInfo, faTrash} from '@fortawesome/free-solid-svg-icons'
+import {faEnvelope, faPlusCircle, faTrash} from '@fortawesome/free-solid-svg-icons'
 import Auth from "./Auth";
 
 class Applications extends React.Component {
@@ -55,7 +55,7 @@ class Applications extends React.Component {
     }
 
     handleEdit(idUser) {
-        this.props.history.push('/application-details/'+idUser);
+        this.props.history.push('/new-result/'+idUser);
     }
 
     componentDidMount() {
@@ -137,7 +137,7 @@ class Applications extends React.Component {
                             <div className="col-md-2">
                                 <button className="btn"  key={application.id} onClick={() => this.handleDelete(application.id)}><FontAwesomeIcon icon={faTrash} /></button>
                                 <a href={"mailto:"+application.patient.email}><button className="btn"><FontAwesomeIcon icon={faEnvelope} /></button></a>
-                                <button className="btn"  onClick={() => this.handleEdit(application.id)}><FontAwesomeIcon icon={faInfo} /></button>
+                                <button className="btn"  onClick={() => this.handleEdit(application.id)}><FontAwesomeIcon icon={faPlusCircle} /></button>
                             </div>
                         </div>)}
                 </div>
