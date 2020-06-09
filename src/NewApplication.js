@@ -34,12 +34,13 @@ class NewApplication  extends React.Component {
             this.setState({applied_by:session.getUserId()});
             this.setState({id_examination:handle});
 
+            const {id_patient,applied_by, id_examination}=this.state;
             axios.post(
                 "http://localhost/public/api/application/create",
                 {
-                    patient_id: this.state.id_patient,
-                    examination_id: this.state.id_examination,
-                    applied_by_id: this.state.applied_by
+                    patient_id: id_patient,
+                    examination_id: id_examination,
+                    applied_by_id: applied_by
                 },{headers: {
                         Authorization: "Bearer "+session.getAuthToken()
                     }}
@@ -48,24 +49,19 @@ class NewApplication  extends React.Component {
                     this.props.history.push('/applications-history');
                     window.location.reload(false);
                 }
-                else {
-                    this.setState({
-                        message: response.data.message
-                    });
-                }
+
             }).catch(error => {
-                this.setState({
-                    error: error.response.data.errors
-                });
+
             });
         }
         else {
             this.setState({applied_by:session.getUserId()});
-            if (handle == 0)
-                this.setState({id_examination:""});
-            else
-                this.setState({id_examination:handle});
+
         }
+        if (handle == 0)
+            this.setState({id_examination:""});
+        else
+            this.setState({id_examination:handle});
     }
 
     handleSubmit(event) {
@@ -83,7 +79,9 @@ class NewApplication  extends React.Component {
                 }}
         ).then(response => {
             if(response.data.status === 200){
-                this.props.history.push('/applications');
+                if(session.getUserRole()=="client")
+                this.props.history.push('/application-history');
+                else this.props.history.push('/applications');
             }
             else {
                 this.setState({
@@ -91,9 +89,18 @@ class NewApplication  extends React.Component {
                 });
             }
         }).catch(error => {
-            this.setState({
-                error: error.response.data.errors
-            });
+            if (error.response.data.message){
+                this.setState({
+                    message: error.response.data.message
+                });
+
+            }
+            else {
+                this.setState({
+                    error: error.response.data.errors
+                });
+            }
+
         });
         event.preventDefault();
     }
@@ -110,7 +117,7 @@ class NewApplication  extends React.Component {
                         <label>
                             <span>Id pacjenta</span>
                         </label>
-                        <input className="form-control" type="text" name="id_patient" onChange={this.handleChange} value={this.state.id_patient} placeholder="Wpisz tutaj id pacjenta ..." required/>
+                        <input className="form-control" type="text" name="id_patient" onChange={this.handleChange} value={this.state.id_patient} placeholder="Wpisz tutaj id pacjenta ..."/>
 
                         {this.state.error.patient_id &&
                             <p className={"mb-0 in-valid"}>{this.state.error.patient_id[0]}</p>
@@ -120,7 +127,7 @@ class NewApplication  extends React.Component {
                         <label>
                             <span>Id badania</span>
                         </label>
-                        <input className="form-control" type="text" name="id_examination" onChange={this.handleChange} value={this.state.id_examination} placeholder="Wpisz tutaj id badania ..." required/>
+                        <input className="form-control" type="text" name="id_examination" onChange={this.handleChange} value={this.state.id_examination} placeholder="Wpisz tutaj id badania ..."/>
 
                         {this.state.error.examination_id&&
                         <p className={"mb-0 in-valid"}>{this.state.error.examination_id[0]}</p>
