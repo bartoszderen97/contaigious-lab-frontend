@@ -76,6 +76,18 @@ class Users extends React.Component {
         })
     }
 
+    showPlec(zmienna){
+        if(zmienna=="M")
+            return "Mężczyzna";
+        else if(zmienna=="F"){
+            return "Kobieta";
+        }
+        else{
+            return "Inna";
+        }
+    }
+
+
     render() {
 
         return (
@@ -129,7 +141,7 @@ class Users extends React.Component {
                                     {user.pesel}
                                 </div>
                                 <div className="col">
-                                    {user.gender}
+                                    {this.showPlec(user.gender)}
                                 </div>
                                 <div className="col">
                                     {user.role}

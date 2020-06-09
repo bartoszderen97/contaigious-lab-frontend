@@ -10,7 +10,9 @@ class NewApplication  extends React.Component {
         this.state = {
             id_patient: "",
             id_examination: "",
-            applied_by: ""
+            applied_by: "",
+            message: "",
+            error: ""
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -48,7 +50,7 @@ class NewApplication  extends React.Component {
                 }
                 else {
                     this.setState({
-                        error: response.data.errors
+                        message: response.data.message
                     });
                 }
             }).catch(error => {
@@ -85,7 +87,7 @@ class NewApplication  extends React.Component {
             }
             else {
                 this.setState({
-                    error: response.data.errors
+                    message: response.data.message
                 });
             }
         }).catch(error => {
@@ -100,18 +102,29 @@ class NewApplication  extends React.Component {
             <div className="container">
                 <form onSubmit={this.handleSubmit}>
                     <h3>Formularz dodawania nowego zgłoszenia</h3>
-                    <div className="form-group">
+
+                    {this.state.message &&
+                    <p className={"mb-0 in-valid"}>{this.state.message}</p>}
+
+                        <div className="form-group">
                         <label>
                             <span>Id pacjenta</span>
                         </label>
                         <input className="form-control" type="text" name="id_patient" onChange={this.handleChange} value={this.state.id_patient} placeholder="Wpisz tutaj id pacjenta ..." required/>
 
+                        {this.state.error.patient_id &&
+                            <p className={"mb-0 in-valid"}>{this.state.error.patient_id[0]}</p>
+                            }
                     </div>
                     <div className="form-group">
                         <label>
                             <span>Id badania</span>
                         </label>
                         <input className="form-control" type="text" name="id_examination" onChange={this.handleChange} value={this.state.id_examination} placeholder="Wpisz tutaj id badania ..." required/>
+
+                        {this.state.error.examination_id&&
+                        <p className={"mb-0 in-valid"}>{this.state.error.examination_id[0]}</p>
+                        }
                     </div>
                     <div className="form-group">
                         <button type="submit" className="btn btn-outline-primary">Zapisz</button>
